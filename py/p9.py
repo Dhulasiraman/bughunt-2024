@@ -1,17 +1,14 @@
-#Write a Python function to check whether a string is a pangram or not.
-#Note : Pangrams are words or sentences containing every letter of the alphabet at least once.
-
 import string
-import sys
 
-# Define a function named 'ispangram' that checks if a string is a pangram
 def ispangram(str1, alphabet=string.ascii_lowercase):
-    alphaset = list(alphabet)
+    # Create a set of unique lowercase letters in the input string
+    str_set = set(c.lower() for c in str1 if c.isalpha())
     
-    str = list(str1.lower())
+    # Convert the alphabet string to a set
+    alphaset = set(alphabet)
     
-    # Check if all lowercase characters in the input string covers all characters in 'alphaset'
-    return alphaset <= str
+    # Check if all the letters in the alphabet set are present in the input string set
+    return alphaset <= str_set
 
-# Print the result of checking if the string is a pangram by calling the 'ispangram' function
-print(ispangram('The quick brown fox jumps over the lazy dog')) 
+# Test the function
+print(ispangram('The quick brown fox jumps over the lazy dog'))  # Output: True
